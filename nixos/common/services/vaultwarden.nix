@@ -43,6 +43,10 @@ in {
       SIGNUPS_ALLOWED = cfg.signups;
     };
 
+    foehammer.backups.paths = [
+      "/var/lib/bitwarden_rs"
+    ];
+
     environmentFile = cfg.envPath;
   };
 }
