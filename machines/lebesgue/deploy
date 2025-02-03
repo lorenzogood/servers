@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+nix flake lock --update-input common
+
+nixos-rebuild switch --flake .#default --target-host admin@lebesgue --use-remote-sudo --build-host localhost --verbose

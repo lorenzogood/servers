@@ -4,10 +4,16 @@
   foelib,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption optionals;
+  inherit (lib) mkIf mkOption mkEnableOption optionals types;
   cfg = config.foehammer.users.admin;
 in {
-  options.foehammer.users.admin.enable = mkEnableOption "Enable a wheel admin user.";
+  options.foehammer.users.admin = {
+    enable = mkEnableOption "Enable a wheel admin user.";
+    hashedPasswordFile = mkOption {
+      type = with types; nullOr str;
+      default = null;
+    };
+  };
   config = mkIf cfg.enable {
     users.users.admin = {
       createHome = true;
@@ -19,6 +25,8 @@ in {
       uid = 9999;
 
       openssh.authorizedKeys.keys = foelib.getSSHKeys "foehammer";
+
+      hashedPasswordFile = cfg.hashedPasswordFile;
     };
 
     users.groups.admin.gid = config.users.users.admin.uid;

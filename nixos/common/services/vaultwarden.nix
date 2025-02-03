@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  ...
 }: let
   inherit (lib) mkEnableOption mkIf mkOption;
 
@@ -32,21 +33,23 @@ in {
     };
   };
 
-  config.services.vaultwarden = mkIf cfg.enable {
-    enable = true;
+  config = mkIf cfg.enable {
+    services.vaultwarden = {
+      enable = true;
 
-    config = {
-      ROCKET_ADDRESS = "127.0.0.1";
-      ROCKET_PORT = cfg.port;
-      DOMAIN = cfg.domain;
-      ROCKET_LOG = "critical";
-      SIGNUPS_ALLOWED = cfg.signups;
+      config = {
+        ROCKET_ADDRESS = "127.0.0.1";
+        ROCKET_PORT = cfg.port;
+        DOMAIN = cfg.domain;
+        ROCKET_LOG = "critical";
+        SIGNUPS_ALLOWED = cfg.signups;
+      };
+
+      environmentFile = cfg.envPath;
     };
 
     foehammer.backups.paths = [
       "/var/lib/bitwarden_rs"
     ];
-
-    environmentFile = cfg.envPath;
   };
 }

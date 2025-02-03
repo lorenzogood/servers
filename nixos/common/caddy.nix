@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  ...
 }: let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.foehammer.caddy;

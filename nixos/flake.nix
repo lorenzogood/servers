@@ -30,11 +30,11 @@
       };
 
       flake = {
-        lib = import ./lib;
+        lib = import ./lib inputs.nixpkgs withSystem;
         overlays.default = final: prev: (import ./lib/packages.nix prev);
 
         nixosModules.default = {...}: {
-          imports = self.lib.utils.findNixFiles ./nixos;
+          imports = self.lib.utils.findNixFiles ./common;
         };
       };
     });

@@ -1,4 +1,6 @@
-rec {
+let
+  utils = import ./utils.nix;
+in rec {
   getSSHKeys = name: (getKeySets ../keys)."${name}";
 
   getKeySets = dir: let
@@ -10,19 +12,11 @@ rec {
       if type == "regular"
       then [
         {
-          name = getName name;
+          name = utils.getName name;
           value = builtins.attrValues (import path);
         }
       ]
       else [];
   in
     builtins.listToAttrs (builtins.concatLists (builtins.attrValues (builtins.mapAttrs procEntry entries)));
-
-  getName = filename: let
-    parts = builtins.split "\\." filename;
-    base = builtins.head (builtins.split "\\." filename);
-  in
-    if builtins.length parts == 1
-    then filename
-    else base;
 }
