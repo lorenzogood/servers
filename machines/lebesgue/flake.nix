@@ -7,6 +7,10 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
     };
+
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
   };
   outputs = inputs @ {common, ...}: let
     supportedSystems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
@@ -19,7 +23,11 @@
   in {
     nixosConfigurations.default = let
       config = common.lib.utils.findNixFiles ./config;
-      modules = [inputs.sops-nix.nixosModules.sops inputs.common.nixosModules.default];
+      modules = [
+        inputs.sops-nix.nixosModules.sops
+        inputs.common.nixosModules.default
+        inputs.impermanence.nixosModules.impermanence
+      ];
     in
       common.lib.mkSystem "lebesgue" "x86_64-linux" (config ++ modules);
 
