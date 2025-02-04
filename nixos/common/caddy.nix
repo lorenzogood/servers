@@ -10,7 +10,7 @@ in {
   config = mkIf cfg.enable {
     services.caddy = {
       enable = true;
-      email = "foehammer127+acme@gmail.com";
+      email = "foehammer127points+acme@gmail.com";
     };
 
     networking.firewall.allowedTCPPorts = [80 443];

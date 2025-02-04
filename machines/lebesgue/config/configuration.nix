@@ -4,14 +4,17 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
   foehammer = {
     users.admin = {
       enable = true;
       hashedPasswordFile = config.sops.secrets.admin-password.path;
+    };
+
+    services.vaultwarden = {
+      enable = true;
+      domain = "https://passwords.foehammer.me";
+      signups = false;
+      envPath = config.sops.secrets.vaultwarden-env.path;
     };
   };
 

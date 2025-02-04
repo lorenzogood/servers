@@ -25,7 +25,7 @@ in {
     };
 
     envPath = mkOption {
-      type = lib.types.port;
+      type = lib.types.path;
     };
 
     domain = mkOption {
@@ -49,7 +49,7 @@ in {
     };
 
     foehammer.backups.paths = [
-      "/var/lib/bitwarden_rs"
+      "/var/lib/vaultwarden"
     ];
   };
 }

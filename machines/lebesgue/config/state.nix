@@ -8,6 +8,7 @@
         "/var/log"
         "/var/lib/nixos"
         "/var/lib/docker"
+        "/var/lib/caddy/.local/share/caddy"
       ]
       ++ config.foehammer.backups.paths;
 
