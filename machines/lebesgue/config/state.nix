@@ -2,15 +2,14 @@
   sops.age.sshKeyPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];
 
   environment.persistence."/persist" = {
-    directories =
-      [
-        "/var/lib/tailscale"
-        "/var/log"
-        "/var/lib/nixos"
-        "/var/lib/docker"
-        "/var/lib/caddy/.local/share/caddy"
-      ]
-      ++ config.foehammer.backups.paths;
+    directories = [
+      "/var/lib/tailscale"
+      "/var/log"
+      "/var/lib/nixos"
+      "/var/lib/docker"
+      "/var/lib/caddy/.local/share/caddy"
+      "/var/lib/vaultwarden"
+    ];
 
     files = [
       "/etc/machine-id"

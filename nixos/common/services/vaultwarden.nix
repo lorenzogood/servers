@@ -47,9 +47,5 @@ in {
 
       environmentFile = cfg.envPath;
     };
-
-    foehammer.backups.paths = [
-      "/var/lib/vaultwarden"
-    ];
   };
 }
