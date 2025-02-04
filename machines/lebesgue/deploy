@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+function deploy() {
+	nixos-rebuild $1 --flake .#default --target-host admin@lebesgue --use-remote-sudo --build-host localhost --verbose
+}
+
 nix flake lock --update-input common
 
-nixos-rebuild switch --flake .#default --target-host admin@lebesgue --use-remote-sudo --build-host localhost --verbose
+if [[ -n $1 ]]; then 
+	deploy $1
+else
+	deploy "switch"
+fi
+
