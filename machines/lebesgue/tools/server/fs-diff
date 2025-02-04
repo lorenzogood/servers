@@ -3,18 +3,20 @@
 # run on server.
 set -euo pipefail
 
-if [[ -f /mnt ]]; then
-        mkdir /mnt
+MOUNTPOINT=/mnt
+
+if [[ ! -d $MOUNTPOINT ]]; then
+    sudo mkdir $MOUNTPOINT
 fi
 
-if ! mountpoint /mnt > /dev/null; then
-        mount -t btrfs /dev/disk/by-label/NIXROOT /mnt
+if !(mountpoint $MOUNTPOINT > /dev/null); then
+        sudo mount -t btrfs /dev/disk/by-label/NIXROOT $MOUNTPOINT
 fi
 
-OLD_TRANSID=$(sudo btrfs subvolume find-new /mnt/root-blank 9999999)
+OLD_TRANSID=$(sudo btrfs subvolume find-new $MOUNTPOINT/root-blank 9999999)
 OLD_TRANSID=${OLD_TRANSID#transid marker was }
 
-sudo btrfs subvolume find-new "/mnt/root" "$OLD_TRANSID" |
+sudo btrfs subvolume find-new "$MOUNTPOINT/root" "$OLD_TRANSID" |
 sed '$d' |
 cut -f17- -d' ' |
 sort |
