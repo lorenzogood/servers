@@ -7,7 +7,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-4RJQyq1PJVInDYTv3WfTig9BDilHndsygEHgIM4DJdY=",
+        "narHash": "sha256-fX+L0Z4YfKPZJdpaosa7INNGnEaVpAswpyqz9mf+oHA=",
         "path": "../../nixos",
         "type": "path"
       },

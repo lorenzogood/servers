@@ -16,12 +16,21 @@
       signups = false;
       envPath = config.sops.secrets.vaultwarden-env.path;
     };
-  };
 
-  services.tailscale = {
-    enable = true;
-    authKeyFile = config.sops.secrets.tskey.path;
-    openFirewall = true;
+    backups.restic = {
+      enable = true;
+
+      repositoryFile = config.sops.secrets.restic-repository.path;
+      environmentFile = config.sops.secrets.restic-env.path;
+      passwordFile = config.sops.secrets.restic-password.path;
+
+      paths = ["/var/lib/vaultwarden"];
+    };
+
+    tailscale = {
+      enable = true;
+      authKeyFile = config.sops.secrets.tskey.path;
+    };
   };
 
   boot.loader.systemd-boot.enable = true;
@@ -30,7 +39,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   networking.firewall.allowedTCPPorts = [22];
-  networking.firewall.trustedInterfaces = ["tailscale0"];
 
   system.stateVersion = "24.11";
 }
