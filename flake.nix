@@ -26,7 +26,7 @@
           overlays = [self.overlays.default];
         };
 
-        packages = import ./lib/packages.nix pkgs;
+        # packages = import ./lib/packages.nix pkgs;
       };
 
       flake = {

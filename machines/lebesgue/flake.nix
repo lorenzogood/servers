@@ -1,6 +1,6 @@
 {
   inputs = {
-    common.url = "path:../../nixos";
+    common.url = "path:../..";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 

@@ -6,11 +6,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "path": "../../nixos",
+        "path": "../..",
         "type": "path"
       },
       "original": {
-        "path": "../../nixos",
+        "path": "../..",
         "type": "path"
       },
       "parent": []
