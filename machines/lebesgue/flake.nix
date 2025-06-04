@@ -2,7 +2,7 @@
   inputs = {
     common.url = "path:../../nixos";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -35,7 +35,7 @@
       pkgs = buildNixpkgs system;
     in {
       default = pkgs.mkShell {
-        buildInputs = with pkgs; [sops];
+        buildInputs = with pkgs; [sops nixos-rebuild];
       };
     });
   };

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function deploy() {
-	nixos-rebuild $1 --flake .#default --target-host admin@lebesgue --use-remote-sudo --build-host localhost --verbose
+	nixos-rebuild $1 --flake .#default --target-host admin@lebesgue --use-remote-sudo --verbose
 }
 
 nix flake lock --update-input common
