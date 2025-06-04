@@ -23,7 +23,7 @@
             allowUnfree = true;
             allowAliases = true;
           };
-          overlays = [self.overlays.default];
+          # overlays = [self.overlays.default];
         };
 
         # packages = import ./lib/packages.nix pkgs;
@@ -31,7 +31,7 @@
 
       flake = {
         lib = import ./lib inputs.nixpkgs withSystem;
-        overlays.default = final: prev: (import ./lib/packages.nix prev);
+        # overlays.default = final: prev: (import ./lib/packages.nix prev);
 
         nixosModules.default = {...}: {
           imports = self.lib.utils.findNixFiles ./common;

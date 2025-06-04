@@ -2,7 +2,7 @@ keys:
   - &admin_foehammer A972C2063F4F2554
   - &server age1kjy9wym6cmz6wqmewws4ledsne47c0e4sr0ksmm66rff3u2f6u3qxvnyg9
 creation_rules:
-  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+  - path_regex: secrets/.*\.(yaml|json|env|ini|bin)$
     key_groups:
     - pgp:
       - *admin_foehammer

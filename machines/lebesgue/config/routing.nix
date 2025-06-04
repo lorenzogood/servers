@@ -8,6 +8,11 @@
           reverse_proxy :${toString config.foehammer.services.vaultwarden.port}
         '';
       };
+      "auth.foehammer.me" = {
+        extraConfig = ''
+          reverse_proxy :${toString config.foehammer.services.authelia.port}
+        '';
+      };
     };
   };
 }
