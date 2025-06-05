@@ -17,23 +17,6 @@
       envPath = config.sops.secrets.vaultwarden-env.path;
     };
 
-    services.glance = {
-      enable = true;
-      pages = [
-        {
-          name = "Home";
-          columns = [
-            {
-              size = "full";
-              widgets = [
-                {type = "calendar";}
-              ];
-            }
-          ];
-        }
-      ];
-    };
-
     services.authelia = {
       enable = true;
       domain = "foehammer.me";
