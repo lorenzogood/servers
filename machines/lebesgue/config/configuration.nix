@@ -17,9 +17,27 @@
       envPath = config.sops.secrets.vaultwarden-env.path;
     };
 
+    services.glance = {
+      enable = true;
+      pages = [
+        {
+          name = "Home";
+          columns = [
+            {
+              size = "full";
+              widgets = [
+                {type = "calendar";}
+              ];
+            }
+          ];
+        }
+      ];
+    };
+
     services.authelia = {
       enable = true;
-      domain = "auth.foehammer.me";
+      domain = "foehammer.me";
+      url = "https://auth.foehammer.me";
       jwtSecretFile = config.sops.secrets.authelia-jwtsecret.path;
 
       userDbFile = config.sops.secrets.authelia-users.path;

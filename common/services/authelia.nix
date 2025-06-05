@@ -16,6 +16,13 @@ in {
       '';
     };
 
+    url = mkOption {
+      type = types.str;
+      description = ''
+        Authelia's url.
+      '';
+    };
+
     userDbFile = mkOption {
       type = types.path;
     };
@@ -122,7 +129,7 @@ in {
         session.cookies = [
           {
             domain = cfg.domain;
-            authelia_url = "https://${cfg.domain}";
+            authelia_url = cfg.url;
           }
         ];
 
@@ -135,6 +142,12 @@ in {
           password_reset.disable = true;
           file = {
             path = cfg.userDbFile;
+          };
+        };
+
+        server.endpoints.authz = {
+          forward-auth = {
+            implementation = "ForwardAuth";
           };
         };
 
