@@ -19,7 +19,8 @@
 
     services.authelia = {
       enable = true;
-      domain = "auth.foehammer.me";
+      domain = "foehammer.me";
+      url = "https://auth.foehammer.me";
       jwtSecretFile = config.sops.secrets.authelia-jwtsecret.path;
 
       userDbFile = config.sops.secrets.authelia-users.path;
