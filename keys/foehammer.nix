@@ -1,5 +1,0 @@
-{
-  leni = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDTIngMpTALLFEU4bDnPWCy7mznZZiPWw9vuYEAJ5zA0 foehammer@lorenzo-leni";
-
-  yubikey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtCcKS1jN/WSb4Ggvpz11pkUdE4kMgrN0xwptXLgSBX openpgp:0x79EFAC41";
-}
