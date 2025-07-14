@@ -5,6 +5,7 @@
     directories = [
       "/var/cache/restic-backups-s3"
       "/var/lib/tailscale"
+      "/var/lib/goatcounter"
       "/var/log"
       "/var/lib/nixos"
       "/var/lib/docker"

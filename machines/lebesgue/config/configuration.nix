@@ -10,6 +10,10 @@
       hashedPasswordFile = config.sops.secrets.admin-password.path;
     };
 
+    services.goatcounter = {
+      enable = true;
+    };
+
     services.vaultwarden = {
       enable = true;
       domain = "https://passwords.foehammer.me";

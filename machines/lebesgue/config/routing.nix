@@ -13,6 +13,11 @@
           reverse_proxy :${toString config.foehammer.services.authelia.port}
         '';
       };
+      "goatcounter.foehammer.me" = {
+        extraConfig = ''
+          reverse_proxy :${toString config.foehammer.services.goatcounter.port}
+        '';
+      };
     };
   };
 }
