@@ -9,6 +9,7 @@
       "/var/log"
       "/var/lib/nixos"
       "/var/lib/docker"
+      "/var/lib/private/readeck"
       "/var/lib/authelia-main"
       "/var/lib/caddy/.local/share/caddy"
       "/var/lib/vaultwarden"

@@ -18,6 +18,12 @@
           reverse_proxy :${toString config.foehammer.services.goatcounter.port}
         '';
       };
+
+      "bookmarks.foehammer.me" = {
+        extraConfig = ''
+          reverse_proxy :${toString config.foehammer.services.readeck.port}
+        '';
+      };
     };
   };
 }

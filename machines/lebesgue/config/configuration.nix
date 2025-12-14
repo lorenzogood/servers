@@ -10,6 +10,12 @@
       hashedPasswordFile = config.sops.secrets.admin-password.path;
     };
 
+    services.readeck = {
+      enable = true;
+      domain = "https://bookmarks.foehammer.me";
+      envFile = config.sops.secrets.readeck-env.path;
+    };
+
     services.goatcounter = {
       enable = true;
     };

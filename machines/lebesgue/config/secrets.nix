@@ -14,6 +14,8 @@
 
       vaultwarden-env = {};
 
+      readeck-env = {};
+
       restic-env = {owner = "restic";};
       restic-password = {owner = "restic";};
       restic-repository = {owner = "restic";};
