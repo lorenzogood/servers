@@ -4,7 +4,7 @@ function deploy() {
 	nixos-rebuild $1 --flake .#default --target-host admin@lebesgue --use-remote-sudo --verbose
 }
 
-nix flake common
+nix flake update common
 
 if [[ -n $1 ]]; then 
 	deploy $1
