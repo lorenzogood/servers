@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function deploy() {
-	nixos-rebuild $1 --flake .#default --target-host admin@lebesgue --use-remote-sudo --verbose
+	nix develop -c nixos-rebuild $1 --flake .#default --target-host admin@lebesgue --use-remote-sudo --verbose
 }
 
 nix flake update common
