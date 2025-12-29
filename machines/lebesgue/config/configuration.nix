@@ -14,24 +14,16 @@
       enable = true;
     };
 
+    services.forgejo = {
+      enable = true;
+      domain = "forge.foehammer.me";
+    };
+
     services.vaultwarden = {
       enable = true;
       domain = "https://passwords.foehammer.me";
       signups = false;
       envPath = config.sops.secrets.vaultwarden-env.path;
-    };
-
-    services.authelia = {
-      enable = true;
-      domain = "foehammer.me";
-      url = "https://auth.foehammer.me";
-      jwtSecretFile = config.sops.secrets.authelia-jwtsecret.path;
-
-      userDbFile = config.sops.secrets.authelia-users.path;
-      # oidcIssuerPrivateKeyFile = config.sops.secrets.authelia-oidc-privkey.path;
-      # oidcHmacSecretFile = config.sops.secrets.authelia-oidc-hmac.path;
-      sessionSecretFile = config.sops.secrets.authelia-session-secret.path;
-      storageEncryptionKeyFile = config.sops.secrets.authelia-storage-encryption.path;
     };
 
     backups.restic = {
@@ -41,7 +33,7 @@
       environmentFile = config.sops.secrets.restic-env.path;
       passwordFile = config.sops.secrets.restic-password.path;
 
-      paths = ["/var/lib/vaultwarden" "/var/lib/authelia"];
+      paths = ["/var/lib/vaultwarden" "/var/lib/authelia" "/var/lib/forgejo"];
     };
 
     tailscale = {

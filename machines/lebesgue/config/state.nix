@@ -4,6 +4,7 @@
   environment.persistence."/persist" = {
     directories = [
       "/var/cache/restic-backups-s3"
+      "/var/lib/forgejo"
       "/var/lib/tailscale"
       "/var/lib/goatcounter"
       "/var/log"

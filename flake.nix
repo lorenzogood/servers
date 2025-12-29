@@ -6,36 +6,37 @@
   };
 
   outputs = inputs @ {self, ...}:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} (toplevel @ {withSystem, ...}: {
-      systems = ["aarch64-darwin" "aarch64-linux" "x86_64-linux"];
+  inputs.flake-parts.lib.mkFlake {inherit inputs;} (toplevel @ {withSystem, ...}: {
+    systems = ["aarch64-darwin" "aarch64-linux" "x86_64-linux"];
 
-      perSystem = {
-        config,
-        self',
-        inputs',
-        pkgs,
-        system,
-        ...
-      }: {
-        _module.args.pkgs = import inputs.nixpkgs {
-          localSystem = system;
-          config = {
-            allowUnfree = true;
-            allowAliases = true;
-          };
-          # overlays = [self.overlays.default];
+    perSystem = {
+      config,
+      self',
+      inputs',
+      pkgs,
+      system,
+      ...
+    }: {
+      _module.args.pkgs = import inputs.nixpkgs {
+        localSystem = system;
+        config = {
+          allowUnfree = true;
+          allowAliases = true;
         };
-
-        # packages = import ./lib/packages.nix pkgs;
+        # overlays = [self.overlays.default];
       };
 
-      flake = {
-        lib = import ./lib inputs.nixpkgs withSystem;
-        # overlays.default = final: prev: (import ./lib/packages.nix prev);
+      # packages = import ./lib/packages.nix pkgs;
+    };
 
-        nixosModules.default = {...}: {
-          imports = self.lib.utils.findNixFiles ./common;
-        };
+    flake = {
+      lib = import ./lib inputs.nixpkgs withSystem;
+
+      # overlays.default = final: prev: (import ./lib/packages.nix prev);
+
+      nixosModules.default = {...}: {
+        imports = self.lib.utils.findNixFiles ./common;
       };
-    });
+    };
+  });
 }
