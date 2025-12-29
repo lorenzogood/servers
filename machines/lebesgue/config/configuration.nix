@@ -17,6 +17,7 @@
     services.forgejo = {
       enable = true;
       domain = "forge.foehammer.me";
+      ssh-domain = "lebesgue";
     };
 
     services.vaultwarden = {

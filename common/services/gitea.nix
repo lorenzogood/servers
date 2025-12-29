@@ -21,14 +21,19 @@ in {
 
     ssh-port = mkOption {
       type = lib.types.port;
-      default = 2222;
+      default = 22;
       description = ''
-        What external port to serve over.
+        Where ssh is available.
       '';
     };
 
     domain = mkOption {
       type = lib.types.str;
+    };
+
+    ssh-domain = mkOption {
+      type = lib.types.str;
+      default = cfg.domain;
     };
   };
 
@@ -49,6 +54,7 @@ in {
           HTTP_PORT = cfg.port;
           DOMAIN = cfg.domain;
           ROOT_URL = "https://${cfg.domain}";
+          SSH_DOMAIN = cfg.ssh-domain;
           SSH_PORT = cfg.ssh-port;
         };
       };
