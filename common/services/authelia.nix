@@ -27,6 +27,31 @@ in {
       type = types.path;
     };
 
+
+    # https://www.authelia.com/integration/ldap/lldap/
+    ldap = {
+      addr = mkOption {
+        type = types.str;
+        description = "LDAP URL";
+      };
+
+      passwordFile = mkOption {
+        type = types.nullOr types.path;
+        default = null;
+        description = "Path to LDAP service account password file";
+      };
+
+      baseDN = mkOption {
+        type = types.str;
+        example = "DC=example,DC=com";
+      };
+
+      user = mkOption {
+        type = types.str;
+        example = "UID=authelia,OU=people,DC=example,DC=com";
+      };
+    };
+
     jwtSecretFile = mkOption {
       type = types.nullOr types.path;
       default = null;
@@ -105,7 +130,7 @@ in {
 
   config = mkIf cfg.enable {
     services.authelia.instances.main = {
-      inherit (cfg) settingsFiles environmentVariables;
+      inherit (cfg) settingsFiles;
 
       enable = true;
 
@@ -140,8 +165,12 @@ in {
         authentication_backend = {
           password_change.disable = true;
           password_reset.disable = true;
-          file = {
-            path = cfg.userDbFile;
+
+          ldap = {
+            implementation = "lldap";
+            address = cfg.ldap.addr;
+            base_dn = cfg.ldap.baseDN;
+            user = cfg.ldap.user;
           };
         };
 
@@ -154,6 +183,10 @@ in {
         storage.local = {
           path = "/var/lib/authelia-main/db.sqlite3";
         };
+      };
+
+      environmentVariables = cfg.environmentVariables // {
+        AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = cfg.ldap.passwordFile;
       };
 
       secrets = {

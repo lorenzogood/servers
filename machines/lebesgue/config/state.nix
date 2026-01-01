@@ -14,7 +14,7 @@
       "/var/lib/caddy/.local/share/caddy"
       "/var/lib/vaultwarden"
 
-      { directory = "/var/lib/private/lldap"; user = "lldap"; group = "lldap"; mode = "0700"; }
+      { directory = "/var/lib/lldap"; user = "lldap"; group = "lldap"; mode = "0700"; }
     ];
 
     files = [

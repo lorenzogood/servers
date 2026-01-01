@@ -23,6 +23,12 @@ in {
       '';
     };
 
+    ldap_port = mkOption {
+      type = lib.types.port;
+      default = 3890;
+      description = "LDAP Port";
+    };
+
     environmentFile = mkOption {
       type = types.nullOr types.path;
       default = null;
@@ -56,6 +62,7 @@ in {
         # Base setup.
         http_port = cfg.port;
         http_url = cfg.url;
+        ldap_port = cfg.ldap_port;
         ldap_base_dn = cfg.base_dn;
         jwt_secret_file = cfg.jwtSecretFile;
 
@@ -71,5 +78,7 @@ in {
       group = "lldap";
     };
     users.groups.lldap = {};
+
+    systemd.services.lldap.serviceConfig.DynamicUser = lib.mkForce false;
   };
 }

@@ -31,12 +31,19 @@
       # oidcHmacSecretFile = config.sops.secrets.authelia-oidc-hmac.path;
       sessionSecretFile = config.sops.secrets.authelia-session-secret.path;
       storageEncryptionKeyFile = config.sops.secrets.authelia-storage-encryption.path;
+
+      ldap = {
+        addr = "ldap://localhost:${toString config.foehammer.services.lldap.ldap_port}";
+        baseDN = config.foehammer.services.lldap.base_dn;
+        user = "UID=authelia,OU=people,${config.foehammer.services.lldap.base_dn}";
+        passwordFile = config.sops.secrets.authelia-lldap-password.path;
+      };
     };
 
     services.lldap = {
       enable = true;
       url = "https://lldap.foehammer.me";
-      base_dn = "dc=foehammer,dc=me";
+      base_dn = "DC=foehammer,DC=me";
 
       adminUserPasswordFile = config.sops.secrets.lldap-admin-password.path;
     };
