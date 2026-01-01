@@ -26,10 +26,6 @@
       authelia-session-secret = autheliaSecret;
       authelia-storage-encryption = autheliaSecret;
       authelia-lldap-password = autheliaSecret;
-      authelia-users = {
-        owner = "authelia-main";
-        sopsFile = ../secrets/authelia/users.yaml;
-      };
     };
   };
 }
