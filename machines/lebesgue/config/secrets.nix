@@ -18,6 +18,8 @@
       restic-password = {owner = "restic";};
       restic-repository = {owner = "restic";};
 
+      lldap-admin-password.owner = "lldap";
+
       authelia-jwtsecret = autheliaSecret;
       authelia-oidc-privkey = autheliaSecret;
       authelia-oidc-hmac = autheliaSecret;

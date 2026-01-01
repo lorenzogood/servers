@@ -33,6 +33,14 @@
       storageEncryptionKeyFile = config.sops.secrets.authelia-storage-encryption.path;
     };
 
+    services.lldap = {
+      enable = true;
+      url = "https://lldap.foehammer.me";
+      base_dn = "dc=foehammer,dc=me";
+
+      adminUserPasswordFile = config.sops.secrets.lldap-admin-password.path;
+    };
+
     services.vaultwarden = {
       enable = true;
       domain = "https://passwords.foehammer.me";
