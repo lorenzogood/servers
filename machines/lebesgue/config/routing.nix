@@ -24,6 +24,12 @@
           reverse_proxy :${toString config.foehammer.services.forgejo.port}
         '';
       };
+      "matrix.foehammer.me" = {
+        extraConfig = ''
+          reverse_proxy :${toString config.foehammer.services.continuwuity.port}
+        '';
+      };
+
     };
   };
 }

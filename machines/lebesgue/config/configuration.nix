@@ -41,6 +41,20 @@
       };
     };
 
+    services.continuwuity = {
+      enable = false;
+      domain = "matrix.foehammer.me";
+      signups = false;
+      allowEncryption = false;
+
+      ldap = {
+        addr = "ldap://localhost:${toString config.foehammer.services.lldap.ldap_port}";
+        baseDN = config.foehammer.services.lldap.base_dn;
+        user = "UID=authelia,OU=people,${config.foehammer.services.lldap.base_dn}";
+        passwordFile = config.sops.secrets.continuwuity-ldap-password.path;
+      };
+    };
+
     services.lldap = {
       enable = true;
       url = "https://lldap.foehammer.me";
