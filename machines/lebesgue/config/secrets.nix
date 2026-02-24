@@ -36,9 +36,9 @@
         authelia-storage-encryption = autheliaSecret;
         authelia-lldap-password = autheliaSecret;
 
-        # continuwuity-ldap-password = {
-        #   owner = "continuwuity";
-        # };
+        continuwuity-ldap-password = {
+          owner = "continuwuity";
+        };
       };
   };
 }

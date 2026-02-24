@@ -5,6 +5,7 @@
   environment.persistence."/persist" = {
     directories = [
       "/var/cache/restic-backups-s3"
+      "/var/lib/continuwuity"
       "/var/lib/forgejo"
       "/var/lib/tailscale"
       "/var/lib/goatcounter"
@@ -14,6 +15,7 @@
       "/var/lib/authelia-main"
       "/var/lib/caddy/.local/share/caddy"
       "/var/lib/vaultwarden"
+      "/opt/continuwuity-db-backups"
 
       {
         directory = "/var/lib/lldap";

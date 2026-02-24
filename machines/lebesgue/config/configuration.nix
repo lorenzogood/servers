@@ -42,7 +42,7 @@
     };
 
     services.continuwuity = {
-      enable = false;
+      enable = true;
       domain = "matrix.foehammer.me";
       signups = false;
       allowEncryption = false;

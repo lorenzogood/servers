@@ -115,5 +115,7 @@ in
         };
       };
     };
+
+    systemd.services.continuwuity.serviceConfig.DynamicUser = lib.mkForce false;
   };
 }
