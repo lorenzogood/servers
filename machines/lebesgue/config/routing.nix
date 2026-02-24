@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   foehammer.caddy.enable = true;
 
   services.caddy = {

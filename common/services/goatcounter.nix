@@ -3,11 +3,13 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf mkOption;
 
   cfg = config.foehammer.services.goatcounter;
-in {
+in
+{
   options.foehammer.services.goatcounter = {
     enable = mkEnableOption "Enable goatcounter server";
 
@@ -26,7 +28,7 @@ in {
       createHome = true;
       group = "goatcounter";
     };
-    users.groups.goatcounter = {};
+    users.groups.goatcounter = { };
 
     systemd.services.goatcounter = {
       serviceConfig = {

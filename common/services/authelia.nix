@@ -2,11 +2,18 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkIf types mkOption mkEnableOption;
+}:
+let
+  inherit (lib)
+    mkIf
+    types
+    mkOption
+    mkEnableOption
+    ;
 
   cfg = config.foehammer.services.authelia;
-in {
+in
+{
   options.foehammer.services.authelia = {
     enable = mkEnableOption "Enable authelia server component.";
     domain = mkOption {
@@ -26,7 +33,6 @@ in {
     userDbFile = mkOption {
       type = types.path;
     };
-
 
     # https://www.authelia.com/integration/ldap/lldap/
     ldap = {
@@ -102,7 +108,7 @@ in {
 
     settingsFiles = mkOption {
       type = types.listOf types.path;
-      default = [];
+      default = [ ];
       example = [
         "/etc/authelia/config.yml"
         "/etc/authelia/access-control.yml"
@@ -124,7 +130,7 @@ in {
         If you provide the raw secret rather than the location of a secret file that secret will be preserved in the nix store.
         For more details: https://www.authelia.com/configuration/methods/secrets/
       '';
-      default = {};
+      default = { };
     };
   };
 
@@ -190,8 +196,7 @@ in {
       };
 
       secrets = {
-        inherit
-          (cfg)
+        inherit (cfg)
           jwtSecretFile
           oidcIssuerPrivateKeyFile
           oidcHmacSecretFile

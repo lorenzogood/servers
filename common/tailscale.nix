@@ -2,10 +2,17 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+}:
+let
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    types
+    mkIf
+    ;
   cfg = config.foehammer.tailscale;
-in {
+in
+{
   options.foehammer.tailscale = {
     enable = mkEnableOption "Enable tailscale";
     authKeyFile = mkOption {
@@ -20,6 +27,6 @@ in {
       openFirewall = true;
     };
 
-    networking.firewall.trustedInterfaces = ["tailscale0"];
+    networking.firewall.trustedInterfaces = [ "tailscale0" ];
   };
 }

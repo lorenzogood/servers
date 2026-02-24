@@ -3,10 +3,18 @@
   lib,
   foelib,
   ...
-}: let
-  inherit (lib) mkIf mkOption mkEnableOption optionals types;
+}:
+let
+  inherit (lib)
+    mkIf
+    mkOption
+    mkEnableOption
+    optionals
+    types
+    ;
   cfg = config.foehammer.users.admin;
-in {
+in
+{
   options.foehammer.users.admin = {
     enable = mkEnableOption "Enable a wheel admin user.";
     hashedPasswordFile = mkOption {
@@ -20,7 +28,7 @@ in {
       description = "SSH Admin User.";
       group = "admin";
 
-      extraGroups = ["wheel"] ++ optionals config.virtualisation.docker.enable ["docker"];
+      extraGroups = [ "wheel" ] ++ optionals config.virtualisation.docker.enable [ "docker" ];
       isNormalUser = true;
       uid = 9999;
 

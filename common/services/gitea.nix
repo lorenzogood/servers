@@ -3,11 +3,13 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf mkOption;
 
   cfg = config.foehammer.services.forgejo;
-in {
+in
+{
   options.foehammer.services.forgejo = {
     enable = mkEnableOption "Enable Gitea Server";
 
@@ -44,8 +46,8 @@ in {
 
       settings = {
         service = {
-         DISABLE_REGISTRATION = true;
-         SHOW_REGISTRATION_BUTTON = false;
+          DISABLE_REGISTRATION = true;
+          SHOW_REGISTRATION_BUTTON = false;
         };
         ui = {
           SHOW_USER_EMAIL = false;

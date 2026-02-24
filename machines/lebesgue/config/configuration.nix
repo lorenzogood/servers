@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   foehammer = {
     users.admin = {
       enable = true;
@@ -62,7 +63,11 @@
       environmentFile = config.sops.secrets.restic-env.path;
       passwordFile = config.sops.secrets.restic-password.path;
 
-      paths = ["/var/lib/vaultwarden" "/var/lib/authelia" "/var/lib/forgejo"];
+      paths = [
+        "/var/lib/vaultwarden"
+        "/var/lib/authelia"
+        "/var/lib/forgejo"
+      ];
     };
 
     tailscale = {
@@ -76,7 +81,7 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  networking.firewall.allowedTCPPorts = [22];
+  networking.firewall.allowedTCPPorts = [ 22 ];
 
   system.stateVersion = "24.11";
 }

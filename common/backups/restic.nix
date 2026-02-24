@@ -3,10 +3,17 @@
   pkgs,
   lib,
   ...
-}: let
-  inherit (lib) mkIf mkEnableOption mkOption types;
+}:
+let
+  inherit (lib)
+    mkIf
+    mkEnableOption
+    mkOption
+    types
+    ;
   cfg = config.foehammer.backups.restic;
-in {
+in
+{
   options.foehammer.backups.restic = {
     enable = mkEnableOption "Enable restic backups";
 
@@ -24,17 +31,17 @@ in {
 
     paths = mkOption {
       type = lib.types.nullOr (lib.types.listOf lib.types.str);
-      default = [];
+      default = [ ];
     };
 
     exclude = mkOption {
       type = lib.types.nullOr (lib.types.listOf lib.types.str);
-      default = [];
+      default = [ ];
     };
   };
 
   config = mkIf cfg.enable {
-    users.groups.restic = {};
+    users.groups.restic = { };
     users.users.restic = {
       isSystemUser = true;
       group = "restic";

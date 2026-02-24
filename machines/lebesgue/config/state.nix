@@ -1,5 +1,6 @@
-{config, ...}: {
-  sops.age.sshKeyPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];
+{ config, ... }:
+{
+  sops.age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
 
   environment.persistence."/persist" = {
     directories = [
@@ -14,7 +15,12 @@
       "/var/lib/caddy/.local/share/caddy"
       "/var/lib/vaultwarden"
 
-      { directory = "/var/lib/lldap"; user = "lldap"; group = "lldap"; mode = "0700"; }
+      {
+        directory = "/var/lib/lldap";
+        user = "lldap";
+        group = "lldap";
+        mode = "0700";
+      }
     ];
 
     files = [

@@ -3,20 +3,28 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
-in {
+in
+{
   config = {
     users.mutableUsers = false;
 
-    environment.systemPackages = with pkgs; [neovim git];
+    environment.systemPackages = with pkgs; [
+      neovim
+      git
+    ];
 
     networking = {
       firewall = {
         enable = true;
       };
 
-      nameservers = ["1.1.1.1" "8.8.8.8"];
+      nameservers = [
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
       # If using dhcpcd:
       dhcpcd.extraConfig = mkIf config.networking.dhcpcd.enable "nohook resolv.conf";
       # If using NetworkManager:

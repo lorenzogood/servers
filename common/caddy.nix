@@ -2,10 +2,12 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.foehammer.caddy;
-in {
+in
+{
   options.foehammer.caddy.enable = mkEnableOption "Enable caddy with default configuration.";
   config = mkIf cfg.enable {
     services.caddy = {
@@ -13,6 +15,9 @@ in {
       email = "foehammer127points+acme@gmail.com";
     };
 
-    networking.firewall.allowedTCPPorts = [80 443];
+    networking.firewall.allowedTCPPorts = [
+      80
+      443
+    ];
   };
 }

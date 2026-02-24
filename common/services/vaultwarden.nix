@@ -3,11 +3,13 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf mkOption;
 
   cfg = config.foehammer.services.vaultwarden;
-in {
+in
+{
   options.foehammer.services.vaultwarden = {
     enable = mkEnableOption "Enable Vaultwarden Server";
 

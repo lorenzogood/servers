@@ -3,11 +3,18 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption types mkIf mkOption;
+}:
+let
+  inherit (lib)
+    mkEnableOption
+    types
+    mkIf
+    mkOption
+    ;
 
   cfg = config.foehammer.services.lldap;
-in {
+in
+{
   options.foehammer.services.lldap = {
     enable = mkEnableOption "Enable LLDAP Server";
 
@@ -77,7 +84,7 @@ in {
       createHome = true;
       group = "lldap";
     };
-    users.groups.lldap = {};
+    users.groups.lldap = { };
 
     systemd.services.lldap.serviceConfig.DynamicUser = lib.mkForce false;
   };
