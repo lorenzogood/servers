@@ -24,6 +24,8 @@
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [ "btrfs" ];
 
+  boot.initrd.systemd.enable = false;
+
   boot.initrd.postDeviceCommands = lib.mkAfter ''
     mkdir /btrfs_tmp
     mount /dev/disk/by-label/NIXROOT /btrfs_tmp
