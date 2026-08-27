@@ -11,10 +11,6 @@
       hashedPasswordFile = config.sops.secrets.admin-password.path;
     };
 
-    services.goatcounter = {
-      enable = true;
-    };
-
     services.forgejo = {
       enable = true;
       domain = "forge.foehammer.me";

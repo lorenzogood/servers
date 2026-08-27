@@ -9,11 +9,6 @@
           reverse_proxy :${toString config.foehammer.services.vaultwarden.port}
         '';
       };
-      "goatcounter.foehammer.me" = {
-        extraConfig = ''
-          reverse_proxy :${toString config.foehammer.services.goatcounter.port}
-        '';
-      };
       "forge.foehammer.me" = {
         extraConfig = ''
           reverse_proxy :${toString config.foehammer.services.forgejo.port}
