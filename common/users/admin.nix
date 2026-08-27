@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  foelib,
-  ...
+{ config
+, lib
+, foelib
+, ...
 }:
 let
   inherit (lib)

@@ -17,13 +17,12 @@
         ];
 
         perSystem =
-          {
-            config,
-            self',
-            inputs',
-            pkgs,
-            system,
-            ...
+          { config
+          , self'
+          , inputs'
+          , pkgs
+          , system
+          , ...
           }:
           {
             _module.args.pkgs = import inputs.nixpkgs {
